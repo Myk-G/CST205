@@ -41,3 +41,5 @@ Link to GitHub repository:
 
 Future work:
 
+	Plan for the future is to implement this to a lrage scale network of traffic cameras and eventually implement in more states 
+
