@@ -21,6 +21,7 @@ from kivy.properties import ObjectProperty
 from colour import Color
 from kivy.core.clipboard import Clipboard
 from kivy.core import window
+from kivy.uix.image import Image
 # from core import logger
 import pyperclip
 import random
@@ -33,6 +34,11 @@ white = '#FFFFFF'
 if_the_user_agree = False
 
 generatedPassword = str()
+
+img = Image(source='z1.png',size_hint_y=None, width=200, allow_stretch=True)
+
+
+ps =''
 
 
 class MainApp(App):
@@ -80,6 +86,8 @@ class MainApp(App):
 
             passswordGen = ""
 
+
+
             
 
             if t_input.text == "":
@@ -108,7 +116,24 @@ class MainApp(App):
                 passwordText = passwordT.text
 
                 if iA == True:
-                    passwordT.text = generatedPassword
+                    # #if the user has agreed to everything then we need to change the values to make sure we get the length that the user requested
+                    # ps =""
+
+                    # for word in generatedPassword:
+                    #     #get random values for the length that is need that the user entered
+                    #     if len(ps) < (int)(t_input.text):
+
+                    lgL['ps'] = ''.join(random.choice(generatedPassword) for _ in range((int)(t_input.text)))
+
+                    update_img(self)
+
+
+                    #first remove the leading 2 indexs and the last, due to extra strings
+                    #generatedPassword[:-1]
+
+                    passwordT.text = ps
+
+                    
                 elif iA == False:   
                     passwordT.text = "Please agree to the \n location terms"
 
@@ -140,13 +165,32 @@ class MainApp(App):
         def copy_password(self):
             globals()
             try:
-                Clipboard.copy(generatedPassword)
+                Clipboard.copy(ps)
                 
             except:
-                print("Could not be copied to clipboard: " + generatedPassword)
+                print("Could not be copied to clipboard: " + ps)
                 pass
 
+        def update_img(self):
+
+            lgl = globals()
+
+            #--------------------------------- image added to the layout --------------------------------
+
+            v5_layout.remove_widget(lgl['img'])
+
+            lgl['img'] = Image(source='z1.png',size_hint_y=None, width=200, allow_stretch=True)
+
             
+
+            v5_layout.add_widget(lgl['img'])
+
+
+            
+
+            #---------------------------------- end -----------------------------------------
+
+
         #---------------------------------- end------------------------------------
 
         #---------------------- header(name of the program) --------------------------
@@ -320,6 +364,19 @@ class MainApp(App):
         main_h_layout.add_widget(h3_layout)
 
         #---------------------------------- end ----------------------------------------------
+
+        v5_layout = BoxLayout(
+                        pos_hint = {'center_x': .5,'center_y': .5},
+                                            size_hint =(.5, .25), 
+                                            pos =(20, 20)
+                    )
+            
+        img = Image(source='z1.png',size_hint_y=None, width=100, allow_stretch=True)
+
+        main_layout.add_widget(v5_layout)
+        
+
+        
 
         #------------------------------------------ end ---------------------------------
 
