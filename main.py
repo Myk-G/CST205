@@ -50,7 +50,7 @@ localDate = localDate[0:4] + " " + localDate[5:7] + localDate[8:]
 # Grabs your IP address and locates your server location
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
-g = geocoder.ip('me
+g = geocoder.ip('me')
                 
 # Sets Longitude and Latitude to string variables which is multplied by 10000 to get a large positive whole nuber
 latitude = str(int(g.latlng[0] * 10000))
