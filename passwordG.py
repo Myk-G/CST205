@@ -37,23 +37,12 @@ generatedPassword = str()
 
 class MainApp(App):
 
-    #variables to keep track of the text fields for later additon
-    # l_info = ObjectProperty(None)
-    #passwordT = ObjectProperty(None)
 
-    # 0 being off 1 being on as in true / false 
-    # you can use 0 or 1 && True or False 
-    Config.set('graphics', 'resizable', '0') 
-  
-    # fix the width of the window  
-    Config.set('graphics', 'width', '1280') 
-  
-    # fix the height of the window  
-    Config.set('graphics', 'height', '720') 
+    def setPS(self,psG):
+        lgl = globals()
 
-    
-    
-    
+        lgl['generatedPassword'] = psG
+
 
     def build(self):
 
@@ -66,7 +55,7 @@ class MainApp(App):
         
 
         def location_agrement(self):
-            test_prompt = "Agreed: We will now take your \n current location! <%add location>"
+            test_prompt = "Agreed: We will now take your \n current location!"
 
             lGl = globals()
 
@@ -101,16 +90,16 @@ class MainApp(App):
                 passwordT.text = "Please lower the complexity"
             else:
 
-                complectiy_num = (int)(t_input.text)
+                # complectiy_num = (int)(t_input.text)
 
-                if(complectiy_num >=5 and complectiy_num <= 36):
-                    #make the proper commands for the user
-                    for x in range(complectiy_num):
-                        passswordGen += (chr)(random.randint(1,101))
+                # if(complectiy_num >=5 and complectiy_num <= 36):
+                #     #make the proper commands for the user
+                #     for x in range(complectiy_num):
+                #         passswordGen += (chr)(random.randint(1,101))
                 
             
 
-                lgL['generatedPassword']  = str(passswordGen)
+                #lgL['generatedPassword']  = str(passswordGen)
 
                 global if_the_user_agree
 
@@ -352,6 +341,6 @@ class MainApp(App):
 
     
 
-if __name__ == '__main__':
- app = MainApp()
- app.run()
+# if __name__ == '__main__':
+#  app = MainApp()
+#  app.run()

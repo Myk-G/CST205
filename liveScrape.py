@@ -44,7 +44,7 @@ RGBImage = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
   
   
 # Use max_size to avoid background objects Hills and such 
-car_trained_data = cv2.CascadeClassifier('car2.xml') # trained xml model of car images (didn't have time to build my own so this is the best I could find online)
+car_trained_data = cv2.CascadeClassifier('car_2.xml') # trained xml model of car images (didn't have time to build my own so this is the best I could find online)
 vehiclesDetected = car_trained_data.detectMultiScale(grayScale, 1.1, 3,minSize= (20,20),maxSize = (100,100))
                                     
 
@@ -63,4 +63,8 @@ if amount_of_vehicles_detected != 0:
 #plt.imshow(img_rgb) 
 #plt.show() 
 
-print(amount_of_vehicles_detected) # amount of vehicles detected
+#print(amount_of_vehicles_detected) # amount of vehicles detected
+
+def a_of_car_d():
+    return amount_of_vehicles_detected
+

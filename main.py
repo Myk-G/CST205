@@ -16,6 +16,7 @@ import requests
 import geocoder
 import socket
 import base64
+import liveScrape
 
 # Definition to send the string weather variable to a base64 encoder
 def num_to_alpha(num):
@@ -62,14 +63,26 @@ cityLength =  str(len(g.city))
 # set all the individual weather data to one string varibable
 passwrd = int(latitude + localTime.translate({ord(':'): None}) + cityLength + temperatureHigh + temperatureLow + sunrise.translate({ord(':'): None}) + sunset.translate({ord(':'): None}) + elevation + longitude)
 
+#amount of cars deteceted
+amountC = liveScrape.a_of_car_d()
+
+if amountC == 0:
+    amountC += 1
+
+#before we get to the best part we have to add a little bit more randomness
+passwrd += passwrd + passwrd *amountC
+
 #Shows string variable password
-print( "Password with longitude, latitude, and weather data \n ", passwrd)
+#print( "Password with longitude, latitude, and weather data \n ", passwrd)
 
 # Sends the variable password to the definition above
 encoded_password = num_to_alpha(passwrd)
 
 # Shows the new encoded, by base64, password
-print("same Password encoded \n", str(encoded_password)[2:-1])
+#print("same Password encoded \n", str(encoded_password)[2:-1])
+
+def ps():
+    return str(encoded_password)
 
 
 
